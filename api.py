@@ -80,7 +80,7 @@ def provider():
     headers = {'Content-Type': 'text/yaml;charset=utf-8'}
     url = request.args.get("url")
     return snippet.parseSubs(
-        requests.get(url, headers={'User-Agent':'v2ray'}).text
+        requests.get(url, headers={'User-Agent':'clash'}).text
     ), headers
 
 
