@@ -1,3 +1,4 @@
+Werkzeug==2.2.2
 flask==2.1.2
 requests==2.27.1
 gevent==21.12.0
