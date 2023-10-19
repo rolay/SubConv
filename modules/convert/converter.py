@@ -85,9 +85,9 @@ def ConvertsV2Ray(buf):
             if sni != "":
                 trojan["sni"] = sni
 
-            network = get(query.get("type").lower())
+            network = get(query.get("type"))
             if network != "":
-                trojan["network"] = network
+                trojan["network"] = network.lower()
             
             if network == "ws":
                 headers = {}
@@ -336,9 +336,12 @@ def ConvertsV2Ray(buf):
             except:
                 continue
 
-            remarks = base64RawURLDecode(query.get("remarks"))
-            name = uniqueName(names, remarks)
-
+            try:
+                remarks = base64RawURLDecode(query.get("remarks"))
+                name = uniqueName(names, remarks)
+            except:
+                continue
+            
             obfsParam = get(query.get("obfsparam"))
             protocolParam = get(query.get("protoparam"))
 
@@ -366,5 +369,3 @@ def ConvertsV2Ray(buf):
         raise Exception("No valid proxies found")
 
     return proxies
-
-
