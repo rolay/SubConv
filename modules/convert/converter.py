@@ -308,7 +308,7 @@ def ConvertsV2Ray(buf):
                 }
             proxies.append(ss)
 
-        elif scheme == "ssr":
+        elif scheme == "ssrb":
             try:
                 dcBuf = base64RawStdDecode(body)
             except:
