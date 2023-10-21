@@ -299,11 +299,8 @@ def ConvertsV2Ray(buf):
             ss["udp"] = True
             if get(query.get("udp-over-tcp")) == "true" or get(query.get("uot")) == "1":
                 ss["udp"] = True
-            if "obfs" in get(query.get("plugin")):
-                try:
-                    obfsParam = get(query.get("plugin-opts")).split(";")
-                except: 
-                    obfsParam = get(query.get("plugin")).split(";")
+            if "obfs" == get(query.get("plugin")):
+                obfsParam = get(query.get("plugin-opts")).split(";")
                 ss["plugin"] = "obfs"
                 ss["plugin-opts"] = {
                     "host": obfsParam[2][10:],
