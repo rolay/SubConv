@@ -59,7 +59,7 @@ def ConvertsV2Ray(buf):
                 down = query.get("downmbps")
             hysteria["up"] = up
             hysteria["down"] = down
-            hysteria["skip-cert-verify"] = bool(distutils.util.strtobool(query.get("insecure")))
+            hysteria["skip-cert-verify"] = bool(distutils.util.strtobool(query.get("insecure",None)))
 
             proxies.append(hysteria)
         elif scheme == "trojan":
