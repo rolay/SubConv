@@ -78,19 +78,19 @@ def ConvertsV2Ray(buf):
             hysteria["port"] = urlHysteria.port
             hysteria["password"] = urlHysteria.password if urlHysteria.password else urlHysteria.username
             hysteria["sni"] = query.get("peer")
-            hysteria["obfs"] = query.get("obfs")
-            hysteria["alpn"] = str(query.get("alpn"))
-            hysteria["auth_str"] = query.get("auth")
-            hysteria["protocol"] = query.get("protocol")
-            up = query.get("up")
-            down = query.get("down")
-            if up == "":
-                up = query.get("upmbps")
-            if down == "":
-                down = query.get("downmbps")
-            hysteria["up"] = up
-            hysteria["down"] = down
-            hysteria["skip-cert-verify"] = bool(distutils.util.strtobool(query.get("insecure","False")))
+            # hysteria["obfs"] = query.get("obfs")
+            # hysteria["alpn"] = str(query.get("alpn"))
+            # hysteria["auth_str"] = query.get("auth")
+            # hysteria["protocol"] = query.get("protocol")
+            # up = query.get("up")
+            # down = query.get("down")
+            # if up == "":
+            #     up = query.get("upmbps")
+            # if down == "":
+            #     down = query.get("downmbps")
+            # hysteria["up"] = up
+            # hysteria["down"] = down
+            # hysteria["skip-cert-verify"] = bool(distutils.util.strtobool(query.get("insecure","False")))
 
             proxies.append(hysteria)            
         elif scheme == "trojan":
