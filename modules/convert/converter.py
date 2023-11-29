@@ -76,7 +76,7 @@ def ConvertsV2Ray(buf):
             hysteria["type"] = scheme
             hysteria["server"] = urlHysteria.hostname
             hysteria["port"] = urlHysteria.port
-            hysteria["password"] = urlHysteria.password
+            hysteria["password"] = urlHysteria.password if urlHysteria.password else urlHysteria.username
             hysteria["sni"] = query.get("peer")
             hysteria["obfs"] = query.get("obfs")
             hysteria["alpn"] = str(query.get("alpn"))
