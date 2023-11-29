@@ -62,6 +62,37 @@ def ConvertsV2Ray(buf):
             hysteria["skip-cert-verify"] = bool(distutils.util.strtobool(query.get("insecure","False")))
 
             proxies.append(hysteria)
+        if scheme == "hysteria2":
+            try:
+                urlHysteria = urlparse.urlparse(line)
+            except:
+                continue
+
+            query = dict(urlparse.parse_qsl(urlHysteria.query))
+            name = uniqueName(names, urlparse.unquote(urlHysteria.fragment))
+            hysteria = {}
+
+            hysteria["name"] = name
+            hysteria["type"] = scheme
+            hysteria["server"] = urlHysteria.hostname
+            hysteria["port"] = urlHysteria.port
+            hysteria["password"] = urlHysteria.password
+            hysteria["sni"] = query.get("peer")
+            hysteria["obfs"] = query.get("obfs")
+            hysteria["alpn"] = str(query.get("alpn"))
+            hysteria["auth_str"] = query.get("auth")
+            hysteria["protocol"] = query.get("protocol")
+            up = query.get("up")
+            down = query.get("down")
+            if up == "":
+                up = query.get("upmbps")
+            if down == "":
+                down = query.get("downmbps")
+            hysteria["up"] = up
+            hysteria["down"] = down
+            hysteria["skip-cert-verify"] = bool(distutils.util.strtobool(query.get("insecure","False")))
+
+            proxies.append(hysteria)            
         elif scheme == "trojan":
             try:
                 urlTrojan = urlparse.urlparse(line)
