@@ -78,7 +78,7 @@ def ConvertsV2Ray(buf):
             hysteria["port"] = urlHysteria.port
             hysteria["password"] = urlHysteria.password if urlHysteria.password else urlHysteria.username
             hysteria["sni"] = query.get("peer")
-            # hysteria["obfs"] = query.get("obfs")
+            hysteria["obfs"] = query.get("obfs")
             # hysteria["alpn"] = str(query.get("alpn"))
             # hysteria["auth_str"] = query.get("auth")
             # hysteria["protocol"] = query.get("protocol")
